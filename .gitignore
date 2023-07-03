@@ -15,3 +15,5 @@ coverage
 db/
 migrations/
 mock-data.tsv
+/backend/examples/
+/backend/cli-app/node_modules/
