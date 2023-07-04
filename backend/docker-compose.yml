@@ -7,10 +7,16 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: test
+      MONGO_INITDB_DATABASE: mishka-board
     ports:
       - "27017:27017"
     volumes:
       - ./db:/data/db
+    healthcheck:
+      test: echo 'db.stats().ok' | mongosh localhost:27017/mishka-board --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
 
   mongodb-express:
     image: mongo-express:latest

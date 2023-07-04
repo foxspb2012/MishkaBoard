@@ -12,7 +12,7 @@ export class CreateUserDto {
 
   @ApiProperty({
     description: 'User last name',
-    example: 'Fox',
+    example: 'Sbitnev',
   })
   @IsString()
   public lastname: string;
