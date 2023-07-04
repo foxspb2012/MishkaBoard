@@ -7,7 +7,7 @@ export class SiteUserEntity implements UserInterface {
   public email: string;
   public firstname: string;
   public lastname: string;
-  public avatarPath: string;
+  public avatar: string;
   public passwordHash: string;
 
   constructor(siteUser: UserInterface) {
@@ -33,7 +33,7 @@ export class SiteUserEntity implements UserInterface {
     this.email = siteUser.email;
     this.firstname = siteUser.firstname;
     this.lastname = siteUser.lastname;
-    this.avatarPath = siteUser.avatarPath;
+    this.avatar= siteUser.avatar;
     this.passwordHash = siteUser.passwordHash;
   }
 }

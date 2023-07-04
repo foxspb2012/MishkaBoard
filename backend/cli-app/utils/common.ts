@@ -14,7 +14,7 @@ export const createOffer = (row: string) => {
     firstname,
     lastname,
     email,
-    avatarPath,
+    avatar,
     passwordHash,
   ] = tokens;
   return {
@@ -25,7 +25,7 @@ export const createOffer = (row: string) => {
     type: OfferType[type as 'Buy' | 'Sell'],
     categories: categories.split(';').map((name) => ({ name })),
     price: Number.parseInt(price, 10),
-    user: { email, firstname, lastname, avatarPath, passwordHash },
+    user: { email, firstname, lastname, avatar, passwordHash },
   } as Offer;
 };
 

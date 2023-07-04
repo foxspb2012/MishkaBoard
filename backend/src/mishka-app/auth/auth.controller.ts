@@ -7,7 +7,7 @@ import {
   Get,
   Param,
 } from '@nestjs/common';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { fillObject } from '../../common/core';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -15,6 +15,7 @@ import { UserRdo } from './rdo/user.rdo';
 import { LoggedUserRdo } from './rdo/logger-user.rdo';
 import { LoginUserDto } from './dto/login-user.dto';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

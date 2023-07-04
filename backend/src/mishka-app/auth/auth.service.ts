@@ -1,5 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { SiteUserMemoryRepository } from '../site-user/site-user-memory.repository';
+import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import {
   AUTH_USER_NOT_FOUND,
   AUTH_USER_EXISTS,
@@ -10,19 +9,26 @@ import { SiteUserEntity } from '../site-user/site-user.entity';
 import { UserInterface } from '../../common/shared-types';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
+import databaseConfig from '../../config/database.config';
+import { ConfigType } from '@nestjs/config';
+import { SiteUserRepository } from '../site-user/site-user.repository';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly siteUserRepository: SiteUserMemoryRepository) {}
+  constructor(
+    private readonly siteUserRepository: SiteUserRepository,
+    @Inject(databaseConfig.KEY)
+    private readonly mongoConfig: ConfigType<typeof databaseConfig>,
+  ) {
+  }
 
   async register(dto: CreateUserDto) {
-    const { firstname, lastname, email, password } = dto;
+    const {firstname, lastname, email, password} = dto;
     const siteUser: UserInterface = {
-      _id: '',
       firstname,
       lastname,
       email,
-      avatarPath: '',
+      avatar: '',
       passwordHash: '',
     };
 
@@ -38,7 +44,7 @@ export class AuthService {
   }
 
   async verifyUser(dto: LoginUserDto) {
-    const { email, password } = dto;
+    const {email, password} = dto;
     const existUser = await this.siteUserRepository.findByEmail(email);
 
     if (!existUser) {
@@ -70,6 +76,6 @@ export class AuthService {
       name: user.firstname + ' ' + user.lastname,
     };
 
-    return { payload };
+    return {payload};
   }
 }
