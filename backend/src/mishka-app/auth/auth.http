@@ -24,6 +24,11 @@ Content-Type: application/json
 ###
 
 # Get user by ID
-GET http://localhost:3333/api/auth/64a41ea53eb729fbd4c3a85e HTTP/1.1
+GET http://localhost:3333/api/auth/64a572113c982381512b3d71 HTTP/1.1
+
+###
+
+# Delete user by ID
+DELETE http://localhost:3333/api/auth/64a572113c982381512b3d71 HTTP/1.1
 
 ###

@@ -5,7 +5,7 @@ import {
   Body,
   HttpCode,
   Get,
-  Param,
+  Param, Delete,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { fillObject } from '../../common/core';
@@ -56,5 +56,11 @@ export class AuthController {
   async show(@Param('id', MongoidValidationPipe) id: string) {
     const existUser = await this.authService.getUser(id);
     return fillObject(UserRdo, existUser);
+  }
+
+  @Delete('/:id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async destroy(@Param('id', MongoidValidationPipe) id: string) {
+    await this.authService.deleteUser(id);
   }
 }

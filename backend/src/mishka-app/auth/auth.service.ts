@@ -78,4 +78,8 @@ export class AuthService {
 
     return {payload};
   }
+
+  async deleteUser(id: string): Promise<void> {
+    await this.siteUserRepository.destroy(id);
+  }
 }

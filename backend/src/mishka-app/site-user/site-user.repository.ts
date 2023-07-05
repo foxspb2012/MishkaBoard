@@ -18,8 +18,8 @@ export class SiteUserRepository implements CRUDRepository<SiteUserEntity, string
   }
 
   public async destroy(id: string): Promise<void> {
-    this.siteUserModel
-      .deleteOne({id});
+    await this.siteUserModel
+      .deleteOne({_id: id});
   }
 
   public async findById(id: string): Promise<UserInterface | null> {

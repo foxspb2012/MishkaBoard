@@ -7,6 +7,7 @@ import databaseConfig from '../config/database.config';
 import { validateEnvironments } from './env.validation';
 import { MongooseModule } from '@nestjs/mongoose';
 import { getMongoDbConfig } from '../config/mongodb.config';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { getMongoDbConfig } from '../config/mongodb.config';
       getMongoDbConfig()
     ),
     AuthModule,
-    SiteUserModule
+    SiteUserModule,
+    CategoryModule
     ],
   controllers: [],
   providers: [],
