@@ -23,7 +23,7 @@ PATCH http://localhost:3333/api/categories/64a5518a06e02abdbc3fbebf HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Автомобили",
+  "name": "Другие автомобили",
   "image": "./car.jpg"
 }
 

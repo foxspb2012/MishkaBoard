@@ -8,6 +8,7 @@ import { validateEnvironments } from './env.validation';
 import { MongooseModule } from '@nestjs/mongoose';
 import { getMongoDbConfig } from '../config/mongodb.config';
 import { CategoryModule } from './category/category.module';
+import { jwtConfig } from '../config/jwt.config';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { CategoryModule } from './category/category.module';
       cache: true,
       isGlobal: true,
       envFilePath: ENV_FILE_PATH,
-      load: [databaseConfig],
+      load: [databaseConfig, jwtConfig],
       validate: validateEnvironments,
     }),
     MongooseModule.forRootAsync(

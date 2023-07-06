@@ -24,7 +24,7 @@ export class SiteUserRepository implements CRUDRepository<SiteUserEntity, string
 
   public async findById(id: string): Promise<UserInterface | null> {
     return this.siteUserModel
-      .findById(id)
+      .findOne({_id: id})
       .exec();
   }
 

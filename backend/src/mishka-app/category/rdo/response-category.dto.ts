@@ -1,7 +1,7 @@
 import { Expose } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 
-export default class CategoryRdo {
+export class CategoryRdo {
   @ApiProperty({
     description: 'The uniq category ID',
     example: '7847dea8-fbb7-41d0-8ff3-54b45db39fad',

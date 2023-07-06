@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { fillObject } from '../../common/core';
 import { CreateCategoryDto } from './dto/create-category.dto';
-import { CategoryRdo } from './response/category.response';
+import { CategoryRdo } from './rdo/response-category.dto';
 import { CategoryService } from './category.service';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { MongoidValidationPipe } from '../pipes/mongoid-validation.pipe';
