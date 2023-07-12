@@ -5,9 +5,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { CategoryModel } from './category.model';
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
-import { MAX_CATEGORIES_COUNT, SortType } from './category.constant';
-
-
+import { MAX_CATEGORIES_COUNT } from './category.constant';
+import { SortType } from '../../common/shared-types';
 
 @Injectable()
 export class CategoryRepository implements CRUDRepository<CategoryEntity, string, CategoryInterface> {
@@ -18,12 +17,6 @@ export class CategoryRepository implements CRUDRepository<CategoryEntity, string
   public async create(item: CategoryEntity): Promise<CategoryInterface> {
     const newCategory = new this.categoryModel(item);
     return newCategory.save();
-  }
-
-  public async findOne(name: string): Promise<CategoryInterface | null> {
-    return this.categoryModel
-      .findOne({name})
-      .exec();
   }
 
   public async destroy(id: string): Promise<void> {
@@ -71,6 +64,5 @@ export class CategoryRepository implements CRUDRepository<CategoryEntity, string
         {$limit: MAX_CATEGORIES_COUNT},
         {$sort: {offerCount: SortType.Down}}
       ]).exec();
-
   }
 }

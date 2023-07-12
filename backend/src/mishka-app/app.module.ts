@@ -9,6 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { getMongoDbConfig } from '../config/mongodb.config';
 import { CategoryModule } from './category/category.module';
 import { jwtConfig } from '../config/jwt.config';
+import { OfferModule } from './offer/offer.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { jwtConfig } from '../config/jwt.config';
     ),
     AuthModule,
     SiteUserModule,
-    CategoryModule
+    CategoryModule,
+    OfferModule
     ],
   controllers: [],
   providers: [],

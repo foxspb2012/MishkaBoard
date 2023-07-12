@@ -12,11 +12,15 @@ export class CategoryService {
   ) {
   }
 
-  async getCategories(): Promise<CategoryInterface[]> {
+  public async getCategories(): Promise<CategoryInterface[]> {
     return this.categoryRepository.find();
   }
 
-  async createCategory(dto: CreateCategoryDto): Promise<CategoryInterface> {
+  public async findByCategoryId(id: string): Promise<CategoryInterface | null> {
+    return this.categoryRepository.findById(id);
+  }
+
+  public async createCategory(dto: CreateCategoryDto): Promise<CategoryInterface> {
 
     const existCategory = await this.categoryRepository.findByCategoryName(dto.name);
 
@@ -28,12 +32,11 @@ export class CategoryService {
     return this.categoryRepository.create(categoryEntity);
   }
 
-  async updateCategory(id: string, dto: UpdateCategoryDto): Promise<CategoryInterface> {
+  public async updateCategory(id: string, dto: UpdateCategoryDto): Promise<CategoryInterface> {
     return this.categoryRepository.update(id, new CategoryEntity(dto));
   }
 
-
-  async deleteCategory(id: string): Promise<void> {
+  public async deleteCategory(id: string): Promise<void> {
     await this.categoryRepository.destroy(id);
   }
 }

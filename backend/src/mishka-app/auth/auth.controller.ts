@@ -3,8 +3,8 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { fillObject } from '../../common/core';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UserRdo } from './rdo/user.rdo';
-import { LoggedUserRdo } from './rdo/logger-user.rdo';
+import { UserResponse } from './rdo/response-user.rdo';
+import { LoggedUserResponse } from './rdo/response-logger-user.rdo';
 import { MongoidValidationPipe } from '../pipes/mongoid-validation.pipe';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
@@ -26,14 +26,14 @@ export class AuthController {
   })
   public async create(@Body() dto: CreateUserDto) {
     const newUser = await this.authService.register(dto);
-    return fillObject(UserRdo, newUser);
+    return fillObject(UserResponse, newUser);
   }
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
   @HttpCode(HttpStatus.OK)
   @ApiResponse({
-    type: LoggedUserRdo,
+    type: LoggedUserResponse,
     status: HttpStatus.OK,
     description: 'User has been successfully logged.',
   })
@@ -67,13 +67,13 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   @ApiResponse({
-    type: UserRdo,
+    type: UserResponse,
     status: HttpStatus.OK,
     description: 'User found',
   })
   async show(@Param('id', MongoidValidationPipe) id: string) {
     const existUser = await this.authService.getUser(id);
-    return fillObject(UserRdo, existUser);
+    return fillObject(UserResponse, existUser);
   }
 
   @Delete('/:id')

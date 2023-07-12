@@ -1,3 +1,4 @@
+export * from './lib/sort-type/sort-type';
 export * from './lib/category/category.interface';
 export * from './lib/comment/comment.interface';
 export * from './lib/user/user.interface';
