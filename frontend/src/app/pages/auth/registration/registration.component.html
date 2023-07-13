@@ -1,0 +1,55 @@
+<div class="sign-up__form form">
+  <div class="form__field sign-up__field">
+    <label for="user-firstname">{{firstnameText}}</label>
+    <input type="text"
+           pInputText
+           [(ngModel)]="firstname"
+           name="user-firstname"
+           id="user-firstname"
+           required/>
+  </div>
+  <div class="form__field sign-up__field">
+    <label for="user-lastname">{{lastnameText}}</label>
+    <input type="text"
+           pInputText
+           [(ngModel)]="lastname"
+           name="user-lastname"
+           id="user-lastname"
+           required/>
+  </div>
+  <div class="form__field sign-up__field">
+    <label for="user-email">{{emailText}}</label>
+    <input type="email"
+           pInputText
+           [(ngModel)]="email"
+           name="user-email"
+           id="user-email"
+           required/>
+  </div>
+  <div class="form__field sign-up__field">
+    <label for="user-password">{{pswText}}</label>
+    <input type="password"
+           pInputText
+           [(ngModel)]="psw"
+           name="user-password"
+           id="user-password"
+           required/>
+  </div>
+  <div class="form__field sign-up__field">
+    <label for="user-passwordRepeat">{{pswRepeatText}}</label>
+    <input type="password"
+           pInputText
+           [(ngModel)]="pswRepeat"
+           name="user-passwordRepeat"
+           id="user-passwordRepeat"
+           required/>
+  </div>
+
+  <button class="sign-up__button btn btn--medium js-button"
+          type="submit"
+          [disabled]="!email || !psw || !pswRepeat"
+          (click)="registration($event)">
+    Создать аккаунт
+  </button>
+</div>
+

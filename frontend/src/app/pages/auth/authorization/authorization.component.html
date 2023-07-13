@@ -1,0 +1,28 @@
+<div class="login__form form">
+  <div class="form__field login__field">
+    <label for="user-email">{{emailText}}</label>
+    <input class="js-field"
+           type="email"
+           pInputText
+           [(ngModel)]="email"
+           name="user-email"
+           id="user-email"
+           required/>
+  </div>
+  <div class="form__field login__field">
+    <label for="user-password">{{pswText}}</label>
+    <input class="js-field"
+           type="password"
+           pInputText
+           [(ngModel)]="psw"
+           name="user-password"
+           id="user-password"
+           required/>
+  </div>
+
+  <button class="login__button btn btn--medium js-button"
+          (click)="(onAuth($event))"
+          type="submit"
+          [disabled]="!email || !psw">{{authTextButton}}</button>
+</div>
+
