@@ -6,9 +6,9 @@ Content-Type: application/json
   "title": "Куплю-продам все товары 4",
   "description": "Новый детективный роман от короля ужасов.",
   "postDate": "2023-05-12T11:56:37.573Z",
-  "image": "./billy-summers.png",
-  "type": "Sell",
-  "price": 1408,
+  "image": "item05.jpg",
+  "type": "Buy",
+  "price": 1700,
   "categories": ["64ad2b43e5335bc442aee6ea"],
   "userId": "64a572113c982381512b3d71"
 }
@@ -21,7 +21,7 @@ DELETE http://localhost:3333/api/offers/64ac1609b0f1b5979a912675 HTTP/1.1
 ###
 
 # Get post by id
-GET http://localhost:3333/api/offers/64ac1609b0f1b5979a912675 HTTP/1.1
+GET http://localhost:3333/api/offers/64ae55e2ad1d0be6139ffba0 HTTP/1.1
 
 ###
 

@@ -20,9 +20,13 @@
            required/>
   </div>
 
-  <button class="login__button btn btn--medium js-button"
-          (click)="(onAuth($event))"
-          type="submit"
-          [disabled]="!email || !psw">{{authTextButton}}</button>
+  <div class="footer-form">
+    <button class="login__button btn btn--medium js-button"
+            (click)="(onAuth($event))"
+            type="submit"
+            [disabled]="!email || !psw">{{authTextButton}}
+    </button>
+    <img ngSrc="assets/img/logo-footer.svg" width="86" height="35" alt="Логотип MishkaBoard">
+  </div>
 </div>
 

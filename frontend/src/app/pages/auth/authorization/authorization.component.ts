@@ -3,7 +3,7 @@ import { LoginUserInterface } from '../../../models/users-interface';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-authorization',
@@ -21,6 +21,7 @@ export class AuthorizationComponent implements OnInit {
   authTextButton: string;
 
   constructor(private authService: AuthService,
+              private messageService: MessageService,
               private router: Router,
               private http: HttpClient) {
 
@@ -41,16 +42,13 @@ export class AuthorizationComponent implements OnInit {
       access_token: string,
       id: string
     }>('http://localhost:3333/api/auth/login', authUser).subscribe((data) => {
-      // authUser.id = data.id;
-      // this.userService.setUser(authUser);
-      // const token: string = data.access_token;
-      // this.userService.setToken(token);
-      // this.userService.setToStore(token);
 
-      this.router.navigate(['tickets/tickets-list']);
+      this.router.navigate(['offers']);
 
-    }, () => {
-      // this.messageService.add({severity: 'warn', summary: "Ошибка"});
+    }, ({error}) => {
+
+      this.messageService.add({severity: 'warn', summary: error.message});
+
     });
   }
 }

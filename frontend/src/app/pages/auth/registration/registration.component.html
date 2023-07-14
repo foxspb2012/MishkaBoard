@@ -45,11 +45,14 @@
            required/>
   </div>
 
-  <button class="sign-up__button btn btn--medium js-button"
-          type="submit"
-          [disabled]="!email || !psw || !pswRepeat"
-          (click)="registration($event)">
-    Создать аккаунт
-  </button>
+  <div class="footer-form">
+    <button class="sign-up__button btn btn--medium js-button"
+            type="submit"
+            [disabled]="!email || !psw || !pswRepeat"
+            (click)="registration($event)"> {{regTextButton}}
+    </button>
+    <img ngSrc="assets/img/logo-footer.svg" width="86" height="35" alt="Логотип MishkaBoard">
+  </div>
+
 </div>
 

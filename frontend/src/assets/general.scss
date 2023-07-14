@@ -45,6 +45,7 @@ $background-color_28: #205e03;
 $background-color_29: rgba(255, 255, 255, 0.05);
 $background-color_30: rgba(216, 216, 216, 0.21);
 $background-color_31: #95939147;
+$background-color_32: #fcf52198;
 $border-color_1: #6c7a86 transparent transparent;
 $border-color_2: transparent transparent #6c7a86;
 $border-color_3: transparent #999 #999;
@@ -139,7 +140,9 @@ body {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
-  font-size: 2em;
+  font-size: 2em;  float: left;
+  width: 100%;
+  max-width: 180px;
   margin: 0.67em 0;
 }
 hr {
@@ -1467,6 +1470,7 @@ input[type="search"] {
   text-transform: uppercase;
   font-size: 16px;
   line-height: 19px;
+  display: flex;
 }
 .ticket-card__desc {
   margin: 0;
@@ -1480,7 +1484,7 @@ input[type="search"] {
   }
 }
 .ticket-card--color01 {
-  background-color: $background-color_11;
+  background-color: $background-color_32;
   .ticket-card__del {
     color: $color_7;
     background-color: $background-color_10;
@@ -1904,9 +1908,10 @@ input[type="search"] {
 .header__input {
   -webkit-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
-  margin-left: auto;
   margin-top: 4px;
   color: $color_3;
+  display: flex;
+  align-items: center;
   &:hover {
     opacity: 0.7;
   }
@@ -1989,7 +1994,7 @@ input[type="search"] {
 }
 .page-footer {
   margin-top: 40px;
-  padding: 45px 0 58px;
+  padding: 5px 0 25px;
   color: $color_3;
   background-color: $background-color_28;
 }
@@ -1997,28 +2002,17 @@ input[type="search"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  justify-content: space-around;
   -webkit-box-flex: 0;
   -ms-flex: none;
   flex: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 300px;
 }
 .page-footer__wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   margin: 0 auto;
   padding: 0 37px;
   width: 1042px;
@@ -2026,13 +2020,9 @@ input[type="search"] {
   -ms-flex-align: end;
   align-items: flex-end;
 }
-.page-footer__logo {
-  margin-bottom: 25px;
-}
 .page-footer__logo-academy {
   display: inline-block;
   vertical-align: top;
-  margin: 2px 0 38px;
   width: 132px;
   opacity: 0.635417;
   -webkit-transition: opacity 0.3s ease-out;
@@ -3412,4 +3402,9 @@ input[type="search"] {
     background-image: url(./img/bg-500@2x.png);
     background-size: cover;
   }
+}
+
+.footer-form {
+  display: flex;
+  justify-content: space-between;
 }

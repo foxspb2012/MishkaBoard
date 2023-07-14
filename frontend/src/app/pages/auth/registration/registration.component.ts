@@ -15,6 +15,7 @@ export class RegistrationComponent implements OnInit {
   emailText = "Эл. почта";
   pswText = "Пароль";
   pswRepeatText = "Пароль еще раз";
+  regTextButton = "Создать аккаунт";
 
   firstname: string;
   lastname: string;
@@ -49,7 +50,7 @@ export class RegistrationComponent implements OnInit {
       this.messageService.add({severity: 'success', summary: 'Регистрация прошла успешно'});
 
     }, ({error}) => {
-      console.log(error);
+
       this.messageService.add({severity: 'warn', summary: error.message});
 
     });
