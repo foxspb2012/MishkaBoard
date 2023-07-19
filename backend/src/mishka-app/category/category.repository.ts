@@ -30,6 +30,12 @@ export class CategoryRepository implements CRUDRepository<CategoryEntity, string
       .exec();
   }
 
+  public async findCategories(categoryId: string[]): Promise<CategoryInterface[] | null> {
+    return this.categoryModel
+      .find({_id: categoryId})
+      .exec();
+  }
+
   public async findByCategoryName(name: string): Promise<CategoryInterface | null> {
     return this.categoryModel
       .findOne({name})

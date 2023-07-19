@@ -6,9 +6,6 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
   collection: 'users',
 })
 export class SiteUserModel extends Document implements UserInterface {
-  @Prop()
-  public avatar: string;
-
   @Prop({
     required: true,
     unique: true,

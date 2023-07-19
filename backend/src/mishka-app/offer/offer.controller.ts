@@ -7,8 +7,10 @@ import {
   HttpCode,
   Get,
   Param,
+  Query,
   Delete,
   Patch,
+  UseInterceptors,
 } from '@nestjs/common';
 import { fillObject } from '../../common/core';
 import { CreateOfferDto } from './dto/create-offer.dto';
@@ -17,6 +19,9 @@ import { OfferResponse } from './rdo/response-offer.dto';
 import { MongoidValidationPipe } from '../pipes/mongoid-validation.pipe';
 import { UpdateOfferDto } from './dto/update-offer.dto';
 import { DEFAULT_NEW_OFFER_COUNT } from './offer.constant.js';
+import { diskStorage } from 'multer';
+import { FilesInterceptor } from '@nestjs/platform-express';
+import { PostQuery } from './query/post.query';
 
 @ApiTags('offers')
 @Controller('offers')
@@ -27,14 +32,31 @@ export class OfferController {
   ) {
   }
 
-  @Get('/:id')
+  static imgName: string;
+
+  @Post('/')
   @ApiResponse({
-    type: OfferResponse,
-    status: HttpStatus.OK,
-    description: 'Offer by id has been found.'
+    status: HttpStatus.CREATED,
+    description: 'Offers has been created.'
   })
-  async show(@Param('id', MongoidValidationPipe) id: string) {
-    const offer = await this.offerService.getOffer(id);
+  @UseInterceptors(FilesInterceptor('image', 1, {
+      storage: diskStorage({
+        destination: './public/',
+        filename: (req, file, cb) => {
+          const imgType = file.mimetype.split('/')
+          const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+          const imgName = uniqueSuffix + '.' + imgType[1];
+
+          cb(null, imgName);
+          OfferController.imgName = imgName;
+        }
+      })
+    })
+  )
+  async create(@Body() dto: CreateOfferDto) {
+    dto.image = OfferController.imgName;
+    const result = await this.offerService.create(dto);
+    const offer = await this.offerService.getOffer(result.id);
     return fillObject(OfferResponse, offer);
   }
 
@@ -60,14 +82,28 @@ export class OfferController {
     return fillObject(OfferResponse, newOffers);
   }
 
-  @Post('/')
+  @Get('/:id')
   @ApiResponse({
-    status: HttpStatus.CREATED,
-    description: 'Offers has been created.'
+    type: OfferResponse,
+    status: HttpStatus.OK,
+    description: 'Offer by id has been found.'
   })
-  async create(@Body() dto: CreateOfferDto) {
-    const newOffer = await this.offerService.create(dto);
-    return fillObject(OfferResponse, newOffer);
+  async show(@Param('id', MongoidValidationPipe) id: string) {
+    const offer = await this.offerService.getOffer(id);
+    return fillObject(OfferResponse, offer);
+  }
+
+  @Get('/:categoryId/offers')
+  @ApiResponse({
+    type: OfferResponse,
+    status: HttpStatus.OK,
+    description: 'Offer by id has been found.'
+  })
+  async getOffersFromCategory(
+    @Param('categoryId', MongoidValidationPipe) id: string, @Query() query: PostQuery
+  ) {
+    const offers = await this.offerService.findByCategoryId(id, query.limit);
+    return fillObject(OfferResponse, offers);
   }
 
   @Patch('/:id')

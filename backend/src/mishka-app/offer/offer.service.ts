@@ -13,8 +13,9 @@ export class OfferService {
   ) {
   }
 
-  public async getOffer(id: string): Promise<OfferInterface | null> {
-    return this.offerRepository.findById(id);
+  public async create(dto: CreateOfferDto): Promise<OfferInterface> {
+    const offerEntity = new OfferEntity(dto);
+    return this.offerRepository.create(offerEntity);
   }
 
   public async getOffers(): Promise<OfferInterface[]> {
@@ -25,9 +26,12 @@ export class OfferService {
     return this.offerRepository.findNew(count);
   }
 
-  public async create(dto: CreateOfferDto): Promise<OfferInterface> {
-    const offerEntity = new OfferEntity(dto);
-    return this.offerRepository.create(offerEntity);
+  public async getOffer(id: string): Promise<OfferInterface | null> {
+    return this.offerRepository.findById(id);
+  }
+
+  public async findByCategoryId(id: string, limit: number): Promise<OfferInterface[]> {
+    return this.offerRepository.findByCategoryId(id, limit);
   }
 
   public async updateOffer(id: string, dto: UpdateOfferDto): Promise<OfferInterface> {

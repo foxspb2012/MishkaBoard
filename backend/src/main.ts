@@ -20,12 +20,12 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('spec', app, document);
 
-  app.useStaticAssets(join(__dirname, '..', 'public'), {prefix: '/public'})
+  app.useStaticAssets(join(__dirname, '..', 'public'), {prefix: '/public'});
   app.enableCors({
     origin: 'http://localhost:4200',
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
     credentials: true,
-  })
+  });
 
   const port = process.env.PORT || 3333;
   await app.listen(port);

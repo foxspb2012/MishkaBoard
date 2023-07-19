@@ -1,4 +1,4 @@
-import { OfferInterface, OfferType } from '../../common/shared-types';
+import { OfferInterface, OfferType, CategoryInterface, UserInterface } from '../../common/shared-types';
 import { Entity } from '../../common/core';
 
 export class OfferEntity implements Entity<OfferInterface>, OfferInterface {
@@ -9,8 +9,8 @@ export class OfferEntity implements Entity<OfferInterface>, OfferInterface {
   public image: string;
   public type: OfferType;
   public price: number;
-  public categories: string[];
-  public userId: string
+  public categories: CategoryInterface[];
+  public userId: UserInterface;
 
   constructor(offer: OfferInterface) {
     this.fillEntity(offer);
@@ -24,10 +24,13 @@ export class OfferEntity implements Entity<OfferInterface>, OfferInterface {
     this.type = entity.type;
     this.price = entity.price;
     this.categories = entity.categories;
-    this.userId = entity.userId
+    this.userId = entity.userId;
   }
 
   public toObject(): OfferInterface {
-    return { ...this };
+    return {
+      ...this,
+      category: this.categories.map(({id}) => ({ id }))
+    };
   }
 }

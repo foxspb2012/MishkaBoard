@@ -6,6 +6,13 @@ export interface UserInterface {
 }
 
 export interface LoginUserInterface {
-  email: string,
-  password: string,
+  id?: string;
+  email?: string,
+  password?: string,
+  name?: string;
+}
+
+export interface UserServiceInterface {
+  id: string | null;
+  name: string | undefined;
 }

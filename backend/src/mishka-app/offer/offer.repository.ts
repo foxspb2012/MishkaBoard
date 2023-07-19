@@ -13,11 +13,9 @@ export class OfferRepository implements CRUDRepository<OfferEntity, string, Offe
     @InjectModel(OfferModel.name) private readonly offerModel: Model<OfferModel>) {
   }
 
-  public async findById(id: string): Promise<OfferInterface | null> {
-    return this.offerModel
-      .findById(id)
-      .populate(['userId', 'categories'])
-      .exec();
+  public async create(item: OfferEntity): Promise<OfferInterface> {
+    const newOffer = new this.offerModel(item);
+    return newOffer.save();
   }
 
   public async findAll(): Promise<OfferInterface[] | null> {
@@ -32,23 +30,31 @@ export class OfferRepository implements CRUDRepository<OfferEntity, string, Offe
       .find()
       .sort({postDate: SortType.Down})
       .limit(count)
+      .exec();
+  }
+
+  public async findById(id: string): Promise<OfferInterface | null> {
+    return this.offerModel
+      .findById(id)
       .populate(['userId', 'categories'])
       .exec();
   }
 
-  public async create(item: OfferEntity): Promise<OfferInterface> {
-    const newOffer = new this.offerModel(item);
-    return newOffer.save();
-  }
-
-  public async destroy(id: string): Promise<void> {
-    await this.offerModel
-      .deleteOne({_id: id});
+  public async findByCategoryId(categoryId: string, limit: number): Promise<OfferInterface[]> {
+    return this.offerModel
+      .find({categories: categoryId}, {}, {limit})
+      .populate(['userId', 'categories'])
+      .exec();
   }
 
   public async update(id: string, item: OfferEntity): Promise<OfferInterface> {
     return this.offerModel
       .findByIdAndUpdate(id, item.toObject(), {new: true})
       .exec();
+  }
+
+  public async destroy(id: string): Promise<void> {
+    await this.offerModel
+      .deleteOne({_id: id});
   }
 }

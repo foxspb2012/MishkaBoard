@@ -1,0 +1,54 @@
+<section class="ticket">
+  <div class="ticket__wrapper">
+    <h1 class="visually-hidden">Карточка объявления</h1>
+    <a class = "ticket__navigate" routerLink="/offers/offers-list">< Назад</a>
+    <div class="ticket__content">
+      <div class="ticket__img">
+        <img src="http://localhost:3333/public/{{offer?.image}}" alt="Изображение товара" height="301" width="241">
+      </div>
+      <div class="ticket__info">
+        <h2 class="ticket__title">{{offer?.title}}</h2>
+        <div class="ticket__header">
+          <p class="ticket__price"><span class="js-sum">{{offer?.price}}</span>&nbsp;₽</p>
+          <p class="ticket__action">{{offer?.type}}</p>
+        </div>
+        <div class="ticket__desc">
+          <p>{{offer?.description}}</p>
+        </div>
+        <div class="ticket__data">
+          <p>
+            <b>Дата добавления:</b>
+            <span>{{offer?.postDate | date:"dd/MM/yyyy HH:mm"}}</span>
+          </p>
+          <p>
+            <b>Автор:&nbsp;</b>
+            <span>{{offer?.userName}}</span>
+          </p>
+          <p>
+            <b>Контакты:&nbsp;</b>
+            <a href="mailto:{{offer?.userEmail}}">{{offer?.userEmail}}</a>
+          </p>
+        </div>
+        <button class="ticket__remove" type="button">Удалить объявление</button>
+        <ul class="ticket__tags">
+          <li>
+            <a href="#" class="category-tile category-tile--small">
+                    <span class="category-tile__image">
+                      <img ngSrc="img/cat.jpg" alt="Иконка категории" height="101" width="101">
+                    </span>
+              <span class="category-tile__label">Дом</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="category-tile category-tile--small">
+                    <span class="category-tile__image">
+                      <img ngSrc="img/cat04.jpg" alt="Иконка категории">
+                    </span>
+              <span class="category-tile__label">Спорт и отдых</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

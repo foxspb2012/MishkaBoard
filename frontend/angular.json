@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ticketSales2022": {
+    "mishkaBoard": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ticket-sales2022",
+            "outputPath": "dist/mishkaBoard",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -32,7 +32,10 @@
               "node_modules/primeng/resources/primeng.min.css",
               "src/assets/main.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/main.js",
+              "src/assets/js/vendor.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -71,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ticketSales2022:build:production"
+              "browserTarget": "mishkaBoard:build:production"
             },
             "development": {
-              "browserTarget": "ticketSales2022:build:development"
+              "browserTarget": "mishkaBoard:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +85,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ticketSales2022:build"
+            "browserTarget": "mishkaBoard:build"
           }
         },
         "test": {

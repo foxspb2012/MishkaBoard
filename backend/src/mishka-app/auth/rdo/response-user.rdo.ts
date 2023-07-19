@@ -33,11 +33,4 @@ export class UserResponse {
     example: 'user@user.ru',
   })
   public email: string;
-
-  @Expose()
-  @ApiProperty({
-    description: 'User avatar path',
-    example: '/images/user2.png',
-  })
-  public avatar: string;
 }

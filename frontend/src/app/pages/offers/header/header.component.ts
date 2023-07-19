@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,8 @@ import { MenuItem } from 'primeng/api';
 })
 export class HeaderComponent implements OnInit {
   items: MenuItem[];
-  constructor() { }
+  userName: string ;
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.items = [
@@ -17,10 +19,16 @@ export class HeaderComponent implements OnInit {
         routerLink: ['offers-list']
       },
       {
+        label: 'Создать объявление',
+        routerLink: ['offer-create']
+      },
+      {
         label: 'Выйти',
         routerLink: ['/auth']
       }
     ];
+
+    this.userName = this.userService.getUser()?.name || 'user';
   }
 
 }

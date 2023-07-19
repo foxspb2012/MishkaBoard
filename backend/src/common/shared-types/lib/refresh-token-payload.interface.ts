@@ -1,4 +1,4 @@
-import { TokenPayload } from '../token-payload/token-payload.interface'
+import { TokenPayload } from './token-payload.interface'
 
 export interface RefreshTokenPayload extends TokenPayload {
   refreshTokenId: string;

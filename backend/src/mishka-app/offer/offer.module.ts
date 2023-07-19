@@ -13,4 +13,5 @@ import { OfferModel, OfferSchema } from './offer.model';
   providers: [OfferService, OfferRepository],
   exports: [OfferRepository]
 })
-export class OfferModule {}
+export class OfferModule {
+}

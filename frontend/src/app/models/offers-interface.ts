@@ -2,12 +2,13 @@ export type OfferInterface = {
   id?: string;
   title: string;
   description: string;
-  postDate: Date;
+  postDate: string;
   image: string;
   type: OfferType;
   price: number;
-  categories: string[];
-  userId: string;
+  categories: string;
+  userName: string;
+  userEmail: string;
 };
 
 export enum OfferType {

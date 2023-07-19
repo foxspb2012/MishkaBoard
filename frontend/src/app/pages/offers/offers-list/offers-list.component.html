@@ -4,17 +4,16 @@
     <div class="tickets-list__header">
       <p class="tickets-list__title">Все предложения</p>
     </div>
-    <ul>
-      <li class="tickets-list__item" *ngFor="let item of offers; let i = index">
+       <ul>
+      <li class="tickets-list__item" (click)="goToOfferInfoPage(item)" *ngFor="let item of offers; let i = index">
         <div class="ticket-card ticket-card--color01">
           <div class="ticket-card__img">
-            <img ngSrc="assets/img/{{item.image}}" alt="Изображение товара" height="301" width="241">
+            <img ngSrc="http://localhost:3333/public/{{item.image}}" alt="Изображение товара" height="301" width="241">
           </div>
           <div class="ticket-card__info">
             <span class="ticket-card__label">{{item.type}}</span>
             <div class="ticket-card__header">
-              <h3 class="ticket-card__title"><a href="http://localhost:3333/api/offers/{{item.id}}">{{item.title}}</a>
-              </h3>
+              <h3 class="ticket-card__title">{{item.title}}</h3>
               <p class="ticket-card__price"><span class="js-sum">{{item.price}}</span>&nbsp;₽</p>
             </div>
             <div class="ticket-card__desc">

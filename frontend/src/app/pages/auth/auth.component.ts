@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
-
-import { MessageService } from 'primeng/api';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-auth',
@@ -10,12 +8,11 @@ import { MessageService } from 'primeng/api';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
-  }
-
+  constructor(private userService: UserService) {}
   isTabCaching: boolean = false;
 
   ngOnInit(): void {
-    window.sessionStorage.removeItem('userSession:');
+    this.userService.clearData();
+    this.userService.clearStore();
   }
 }

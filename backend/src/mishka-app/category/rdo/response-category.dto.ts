@@ -31,3 +31,20 @@ export class CategoryResponse {
   })
   public image: string;
 }
+
+export class CategoryInOfferResponse {
+
+  @Expose({ name: 'id' })
+  @ApiProperty({
+    description: 'The uniq category ID',
+    example: '7847dea8-fbb7-41d0-8ff3-54b45db39fad',
+  })
+  public id: string;
+
+  @Expose()
+  @ApiProperty({
+    description: 'Name of category',
+    example: 'Cats',
+  })
+  public name: string;
+}

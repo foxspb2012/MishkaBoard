@@ -46,3 +46,15 @@
   transition: box-shadow 0.2s;
   margin: 0 0 -2px 0;
 }
+
+.p-menubar {
+  padding: 0.5rem;
+  background-color: inherit;
+  color: #ddd;
+  border-radius: 3px;
+  border-style: none;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-text {
+  color: #dee2e6;
+}

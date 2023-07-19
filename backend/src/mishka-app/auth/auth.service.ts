@@ -29,7 +29,6 @@ export class AuthService {
       firstname,
       lastname,
       email,
-      avatar: '',
       passwordHash: '',
     };
 
@@ -92,7 +91,11 @@ export class AuthService {
       refresh_token: await this.jwtService.signAsync(refreshTokenPayload, {
         secret: this.jwtOptions.refreshTokenSecret,
         expiresIn: this.jwtOptions.refreshTokenExpiresIn,
-      })
+      }),
+      user: {
+        name: user.firstname + " " + user.lastname,
+        id: user._id
+      }
     };
   }
 

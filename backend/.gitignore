@@ -37,3 +37,4 @@ lerna-debug.log*
 /examples/
 /cli-app/node_modules/
 /db/
+/public/

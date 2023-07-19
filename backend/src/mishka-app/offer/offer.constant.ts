@@ -1,1 +1,2 @@
-export const DEFAULT_NEW_OFFER_COUNT = 4;
+export const DEFAULT_NEW_OFFER_COUNT = 8;
+

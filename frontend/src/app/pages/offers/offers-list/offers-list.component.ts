@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OfferService } from '../../../services/offers/offer.service';
 import { OfferInterface } from '../../../models/offers-interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-offers-list',
@@ -10,13 +11,18 @@ import { OfferInterface } from '../../../models/offers-interface';
 export class OffersListComponent implements OnInit {
   offers: OfferInterface[];
 
-  constructor(private offerService: OfferService) {
+  constructor(private router: Router,
+              private offerService: OfferService) {
   }
 
   ngOnInit(): void {
     this.offerService.getOffers().subscribe((data: OfferInterface[]): void => {
       this.offers = data;
     });
+  }
+
+  goToOfferInfoPage(item: OfferInterface): void {
+    this.router.navigate([`/offers/offer/${item.id}`])
   }
 
 }
