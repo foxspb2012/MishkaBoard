@@ -16,6 +16,10 @@ export class CategoryService {
     return this.categoryRepository.find();
   }
 
+  public async getListCategories(): Promise<CategoryInterface[]> {
+    return this.categoryRepository.findList();
+  }
+
   public async findByCategoryId(id: string): Promise<CategoryInterface | null> {
     return this.categoryRepository.findById(id);
   }

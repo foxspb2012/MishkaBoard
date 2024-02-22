@@ -21,6 +21,7 @@ export class OfferRepository implements CRUDRepository<OfferEntity, string, Offe
   public async findAll(): Promise<OfferInterface[] | null> {
     return this.offerModel
       .find()
+      .sort({postDate: SortType.Down})
       .populate(['userId', 'categories'])
       .exec();
   }

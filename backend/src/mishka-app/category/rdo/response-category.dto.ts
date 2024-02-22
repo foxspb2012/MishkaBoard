@@ -32,7 +32,7 @@ export class CategoryResponse {
   public image: string;
 }
 
-export class CategoryInOfferResponse {
+export class CategoryListResponse {
 
   @Expose({ name: 'id' })
   @ApiProperty({

@@ -1,6 +1,6 @@
 import { Expose, Transform, Type } from 'class-transformer';
 import { UserResponse } from '../../auth/rdo/response-user.rdo.js';
-import { CategoryInOfferResponse } from '../../category/rdo/response-category.dto.js';
+import { CategoryListResponse } from '../../category/rdo/response-category.dto.js';
 import { ApiProperty } from '@nestjs/swagger';
 import { MaxLength, MinLength } from 'class-validator';
 
@@ -64,10 +64,13 @@ export class OfferResponse {
   @Expose()
   @ApiProperty({
     description: 'The uniq category id',
-    example: '634971d0351d0b51b90a004b'
+    example: {
+      "id": "64a572513c982381512b3d78",
+      "name": "Автомобили"
+    }
   })
-  @Type(() => CategoryInOfferResponse)
-  public categories!: CategoryInOfferResponse[];
+  @Type(() => CategoryListResponse)
+  public categories!: CategoryListResponse[];
 
   @Expose({name: 'userId'})
   @ApiProperty({

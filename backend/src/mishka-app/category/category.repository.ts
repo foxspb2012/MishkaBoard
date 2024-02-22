@@ -48,6 +48,13 @@ export class CategoryRepository implements CRUDRepository<CategoryEntity, string
       .exec();
   }
 
+  public async findList(): Promise<CategoryInterface[] | null> {
+    return this.categoryModel
+      .find()
+      .sort('name')
+      .exec();
+  }
+
   public async find(): Promise<CategoryEntity[]> {
     return this.categoryModel
       .aggregate([
@@ -69,6 +76,8 @@ export class CategoryRepository implements CRUDRepository<CategoryEntity, string
         {$unset: 'offers'},
         {$limit: MAX_CATEGORIES_COUNT},
         {$sort: {offerCount: SortType.Down}}
-      ]).exec();
+      ])
+      .sort('name')
+      .exec();
   }
 }

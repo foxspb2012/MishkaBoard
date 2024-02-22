@@ -1484,7 +1484,7 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 .ticket-card--color01 {
-  background-color: #f8bc7f;
+  background-color: #88868aef;
 }
 .ticket-card--color01 .ticket-card__del {
   color: rgba(0, 0, 0, 0.5);
@@ -1569,7 +1569,7 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 .ticket-card--color11 {
-  background-color: #d69b02;
+  background-color: #88868aef;
 }
 .ticket-card--color11 .ticket-card__del {
   color: rgba(0, 0, 0, 0.5);

@@ -6,82 +6,36 @@
         <div class="ticket-form__avatar-container js-preview-container">
           <div class="ticket-form__avatar js-preview"></div>
           <div class="ticket-form__field-avatar">
-            <label for="avatar">
-              <span class="ticket-form__text-upload">Загрузить фото…</span>
-            </label>
             <input type="file" id="avatar" name="image" class="visually-hidden js-file-field"
                    (change)="selectFile($event)">
+            <label for="avatar">
+              <span class="ticket-form__text-upload">Загрузить фото…</span>
+              <span class="ticket-form__text-another">Загрузить другое фото…</span>
+            </label>
           </div>
         </div>
         <div class="ticket-form__content">
           <div class="ticket-form__row">
             <div class="form__field">
               <input type="text" formControlName="title" id="offer-name" class="js-field" required="">
-              <label for="offer-name">Название</label>
+              <label class="label-offer" for="offer-name">Название</label>
             </div>
           </div>
           <div class="ticket-form__row">
             <div class="form__field">
               <textarea formControlName="description" id="comment-field" cols="30" rows="10"
                         class="js-field"></textarea>
-              <label for="comment-field">Описание</label>
+              <label class="label-offer" for="comment-field">Описание</label>
             </div>
 
           </div>
           <div class="ticket-form__row">
-            <div class="selectr-container selectr-mobile multiple">
-              <!--              <div class="selectr-selected">Выбрать категорию публикации</div>-->
-              <!--              <div class="selectr-selected selectr-selected&#45;&#45;hidden" disabled="undefined" tabindex="0"-->
-              <!--                   aria-expanded="false">-->
-              <!--                <ul class="selectr-label selectr-tags"></ul>-->
-              <!--                <div class="selectr-placeholder">Выбрать категорию публикации</div>-->
-              <!--              </div>-->
-              <!--              <div class="selectr-options-container">-->
-              <!--                <div class="selectr-notice"></div>-->
-              <!--                <ul class="selectr-options" role="tree" aria-hidden="true" aria-expanded="false"></ul>-->
-              <!--              </div>-->
-
+            <div class="selectr-container selectr-mobile">
               <select formControlName="categories" id="category-field" data-label="Выбрать категорию публикации"
                       class="form__select js-multiple-select">
-
-                <option value="64ad2b43e5335bc442aee6ea">Дом</option>
-                <option value="64a572513c982381512b3d78">Спорт и отдых</option>
-                <option value="3">Авто</option>
-                <option value="4">Электроника</option>
-                <option value="5">Одежда</option>
-                <option value="6">Книги</option>
+                <option *ngFor="let item of categories" value={{item.id}}>{{item.name}}</option>
               </select>
             </div>
-
-            <!--            <div class="selectr-container selectr-mobile multiple open">-->
-            <!--              <div class="selectr-selected">Выбрать категорию публикации</div>-->
-            <!--              <div class="selectr-selected selectr-selected&#45;&#45;hidden" disabled="undefined" tabindex="0"-->
-            <!--                   aria-expanded="false">-->
-            <!--                <ul class="selectr-label selectr-tags"></ul>-->
-            <!--                <div class="selectr-placeholder">Выбрать категорию публикации</div>-->
-            <!--              </div>-->
-            <!--              <div class="selectr-options-container">-->
-            <!--                <div class="selectr-notice"></div>-->
-            <!--                <ul class="selectr-options" role="tree" aria-hidden="false" aria-expanded="true">-->
-            <!--                  <li class="selectr-option active selected" role="treeitem" aria-selected="true">Дом</li>-->
-            <!--                  <li class="selectr-option" role="treeitem" aria-selected="false">Спорт и отдых</li>-->
-            <!--                  <li class="selectr-option" role="treeitem" aria-selected="false">Авто</li>-->
-            <!--                  <li class="selectr-option" role="treeitem" aria-selected="false">Электроника</li>-->
-            <!--                </ul>-->
-            <!--              </div>-->
-
-            <!--              <select name="category" id="category-field" data-label="Выбрать категорию публикации"-->
-            <!--                      class="form__select js-multiple-select selectr-visible" multiple="" tabindex="-1"-->
-            <!--                      aria-hidden="true">-->
-
-            <!--                <option value="64ad2b43e5335bc442aee6ea">Дом</option>-->
-            <!--                <option value="2">Спорт и отдых</option>-->
-            <!--                <option value="3">Авто</option>-->
-            <!--                <option value="4">Электроника</option>-->
-            <!--                <option value="5">Одежда</option>-->
-            <!--                <option value="6">Книги</option>-->
-            <!--              </select>-->
-            <!--            </div>-->
           </div>
           <div class="ticket-form__row">
             <div class="form__field form__field--price">
@@ -103,7 +57,7 @@
 
           </div>
         </div>
-        <button class="form__button btn btn--medium js-button" type="submit"
+        <button class="form__button btn btn--medium" type="submit"
                 (click)="createOffer()"
                 [disabled]="!offerForm.valid">
           Опубликовать

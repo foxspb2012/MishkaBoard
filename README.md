@@ -20,5 +20,6 @@ _`.editorconfig`, `.gitattributes`, `.gitignore`._
 git clone SSH-адрес_вашего_форка
 ```
 Команда клонирует репозиторий на ваш компьютер и подготовит всё необходимое для старта работы.
+
 <a href="https://hse.spbstu.ru/"><img align="left" width="150" height="50" title="Политех" src="	https://hse.spbstu.ru/_images/hse.svg"></a>
 Репозиторий создан для выпускной квалификационной работы на курсе профессиональной переподготовки [«Веб-разработчик. Языки JavaScript/TypeScript»](http://hse.spbstu.ru/Retraining/Programs/Javascript-Developer) от [Высшей инженерной школы](http://hse.spbstu.ru/).

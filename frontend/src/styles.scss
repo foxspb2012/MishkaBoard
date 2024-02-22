@@ -24,7 +24,7 @@ $background-color_7: rgba(255, 255, 255, 0.2);
 $background-color_8: rgba(255, 255, 255, 0.1);
 $background-color_9: #000;
 $background-color_10: rgba(0, 0, 0, 0.08);
-$background-color_11: #f8bc7f;
+$background-color_11: #88868aef;
 $background-color_12: #534326;
 $background-color_13: rgba(255, 255, 255, 0.08);
 $background-color_14: #81756b;
@@ -35,7 +35,7 @@ $background-color_18: #dfe2db;
 $background-color_19: #d9b48c;
 $background-color_20: #6a3310;
 $background-color_21: #878c6e;
-$background-color_22: #d69b02;
+$background-color_22: #fcf521ef;
 $background-color_23: #78914f;
 $background-color_24: #dcdedf;
 $background-color_25: #594535;
@@ -1555,7 +1555,7 @@ input[type="search"] {
   background-color: $background-color_21;
 }
 .ticket-card--color11 {
-  background-color: $background-color_22;
+  background-color: $background-color_11;
   .ticket-card__del {
     color: $color_7;
     background-color: $background-color_10;

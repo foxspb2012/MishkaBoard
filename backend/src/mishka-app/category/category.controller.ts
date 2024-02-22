@@ -2,7 +2,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Controller, Post, HttpStatus, Body, HttpCode, Get, Param, Delete, Patch } from '@nestjs/common';
 import { fillObject } from '../../common/core';
 import { CreateCategoryDto } from './dto/create-category.dto';
-import { CategoryResponse } from './rdo/response-category.dto';
+import { CategoryListResponse, CategoryResponse } from './rdo/response-category.dto';
 import { CategoryService } from './category.service';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { MongoidValidationPipe } from '../pipes/mongoid-validation.pipe';
@@ -24,6 +24,17 @@ export class CategoryController {
   async index() {
     const categories = await this.categoryService.getCategories();
     return fillObject(CategoryResponse, categories);
+  }
+
+  @Get('/list')
+  @ApiResponse({
+    type: CategoryListResponse,
+    status: HttpStatus.OK,
+    description: 'List of categories has been found.'
+  })
+  async getList() {
+    const listCategories = await this.categoryService.getListCategories();
+    return fillObject(CategoryListResponse, listCategories);
   }
 
   @Get('/:id')
