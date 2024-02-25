@@ -8,17 +8,14 @@ import { SiteUserRepository } from '../site-user/site-user.repository';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigType } from '@nestjs/config';
 import { jwtConfig } from '../../config/jwt.config';
-import {
-  UserNotFoundException, UserExistsException, UserNotRegisteredException, UserPasswordWrongException
-} from './exceptions';
-import { RefreshTokenService } from '../refresh-token/refresh-token.service';
+import { UserNotFoundException, UserExistsException, UserNotRegisteredException, UserPasswordWrongException } from './exceptions';
+
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly siteUserRepository: SiteUserRepository,
     private readonly jwtService: JwtService,
-    private readonly refreshTokenService: RefreshTokenService,
     @Inject(jwtConfig.KEY) private readonly jwtOptions: ConfigType<typeof jwtConfig>,
   ) {
   }
@@ -68,7 +65,7 @@ export class AuthService {
     return existUser;
   }
 
-  async loginUser(user: Pick<UserInterface, '_id' | 'email' | 'lastname' | 'firstname'>, refreshTokenId?: string) {
+  async loginUser(user: Pick<UserInterface, '_id' | 'email' | 'lastname' | 'firstname'>) {
     const payload: TokenPayload = {
       sub: user._id,
       email: user.email,
@@ -76,22 +73,8 @@ export class AuthService {
       lastname: user.lastname
     };
 
-    await this.refreshTokenService
-      .deleteRefreshSession(refreshTokenId);
-
-    const refreshTokenPayload: RefreshTokenPayload = {
-      ...payload, refreshTokenId: randomUUID()
-    }
-
-    await this.refreshTokenService
-      .createRefreshSession(refreshTokenPayload);
-
     return {
-      access_token: await this.jwtService.signAsync(payload),
-      refresh_token: await this.jwtService.signAsync(refreshTokenPayload, {
-        secret: this.jwtOptions.refreshTokenSecret,
-        expiresIn: this.jwtOptions.refreshTokenExpiresIn,
-      }),
+      token: await this.jwtService.signAsync(payload),
       user: {
         name: user.firstname + " " + user.lastname,
         id: user._id

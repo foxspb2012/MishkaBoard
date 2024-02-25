@@ -7,15 +7,11 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getJwtConfig } from '../../config/jwt.config';
-import { LocalStrategy } from './strategies/local.strategy';
-import { JwtRefreshStrategy } from './strategies/jwt-refresh.strategy';
-import { RefreshTokenModule } from '../refresh-token/refresh-token.module';
 
 @Module({
   imports: [
     SiteUserModule,
     PassportModule,
-    RefreshTokenModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -23,7 +19,7 @@ import { RefreshTokenModule } from '../refresh-token/refresh-token.module';
     })
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, LocalStrategy, JwtRefreshStrategy],
+  providers: [AuthService, JwtStrategy],
 })
 export class AuthModule {
 }
