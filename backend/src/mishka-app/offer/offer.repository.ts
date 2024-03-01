@@ -30,6 +30,7 @@ export class OfferRepository implements CRUDRepository<OfferEntity, string, Offe
     return this.offerModel
       .find()
       .sort({postDate: SortType.Down})
+      .populate(['userId', 'categories'])
       .limit(count)
       .exec();
   }

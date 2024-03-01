@@ -14,4 +14,8 @@ export class CategoryService {
   getCategories(): Observable<CategoryInterface[]> {
     return this.categoryServiceRest.getListCategories();
   }
+
+  getAllCategories(): Observable<CategoryInterface[]> {
+    return this.categoryServiceRest.getAllCategories();
+  }
 }

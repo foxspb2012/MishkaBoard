@@ -14,4 +14,8 @@ export class CategoryRestService {
   getListCategories(): Observable<CategoryInterface[]> {
     return this.http.get<CategoryInterface[]>('http://localhost:3333/api/categories/list');
   }
+
+  getAllCategories(): Observable<CategoryInterface[]> {
+    return this.http.get<CategoryInterface[]>('http://localhost:3333/api/categories');
+  }
 }

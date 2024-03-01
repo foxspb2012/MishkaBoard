@@ -1,27 +1,84 @@
 <div class="tickets-list">
   <h2 class="visually-hidden">Все предложения</h2>
   <div class="tickets-list__wrapper">
-    <div class="tickets-list__header">
-      <p class="tickets-list__title">Все предложения</p>
-    </div>
-       <ul>
-      <li class="tickets-list__item" (click)="goToOfferInfoPage(item)" *ngFor="let item of offers; let i = index">
-        <div class="ticket-card ticket-card--color01">
-          <div class="ticket-card__img">
-            <img ngSrc="http://localhost:3333/public/{{item.image}}" alt="Изображение товара" height="301" width="241">
-          </div>
-          <div class="ticket-card__info">
-            <span class="ticket-card__label">{{item.type}}</span>
-            <div class="ticket-card__header">
-              <h3 class="ticket-card__title">{{item.title}}</h3>
-              <p class="ticket-card__price"><span class="js-sum">{{item.price}}</span>&nbsp;₽</p>
-            </div>
-            <div class="ticket-card__desc">
-              <p>{{item.description}}</p>
-            </div>
-          </div>
+    <h1 class="visually-hidden">Сервис объявлений "Mishka Board"</h1>
+    <section class="categories-list">
+      <h2 class="visually-hidden">Самые новые предложения</h2>
+      <div class="tickets-list__wrapper">
+        <div class="tickets-list__header">
+          <p class="tickets-list__title">Категории</p>
         </div>
-      </li>
-    </ul>
+        <ul class="categories-list__wrapper">
+          <li class="categories-list__item"
+            *ngFor="let item of categories; let i = index">
+            <a href="/offers/{{item.id}}" class="category-tile category-tile--default">
+              <span class="category-tile__image">
+                <img ngSrc="http://localhost:3333/public/{{item.image}}" alt="Иконка категории">
+              </span>
+              <span class="category-tile__label">{{ item.name }}
+                <span class="category-tile__qty js-qty">{{ item.offerCount }}</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="tickets-list">
+      <h2 class="visually-hidden">Самые новые предложения</h2>
+      <div class="tickets-list__wrapper">
+        <div class="tickets-list__header">
+          <p class="tickets-list__title">Самое свежее</p>
+        </div>
+        <ul>
+          <li class="tickets-list__item" (click)="goToOfferInfoPage(item)"
+              *ngFor="let item of newOffers; let i = index">
+            <div class="ticket-card ticket-card--color0{{i+1}}">
+              <div class="ticket-card__img">
+                <img ngSrc="http://localhost:3333/public/{{item.image}}" alt="Изображение товара" height="301"
+                     width="241">
+              </div>
+              <div class="ticket-card__info">
+                <span class="ticket-card__label">{{ item.type }}</span>
+                <div class="ticket-card__header">
+                  <h3 class="ticket-card__title">{{ item.title }}</h3>
+                  <p class="ticket-card__price"><span class="js-sum">{{ item.price }}</span>&nbsp;₽</p>
+                </div>
+                <div class="ticket-card__desc">
+                  <p>{{ item.description }}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="tickets-list">
+      <h2 class="visually-hidden">Все предложения</h2>
+      <div class="tickets-list__wrapper">
+        <div class="tickets-list__header">
+          <p class="tickets-list__title">Все предложения</p>
+        </div>
+        <ul>
+          <li class="tickets-list__item" (click)="goToOfferInfoPage(item)" *ngFor="let item of offers; let i = index">
+            <div class="ticket-card ticket-card--color01">
+              <div class="ticket-card__img">
+                <img ngSrc="http://localhost:3333/public/{{item.image}}" alt="Изображение товара" height="301"
+                     width="241">
+              </div>
+              <div class="ticket-card__info">
+                <span class="ticket-card__label">{{ item.type }}</span>
+                <div class="ticket-card__header">
+                  <h3 class="ticket-card__title">{{ item.title }}</h3>
+                  <p class="ticket-card__price"><span class="js-sum">{{ item.price }}</span>&nbsp;₽</p>
+                </div>
+                <div class="ticket-card__desc">
+                  <p>{{ item.description }}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
   </div>
 </div>

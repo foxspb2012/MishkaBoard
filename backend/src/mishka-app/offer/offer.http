@@ -3,7 +3,7 @@ POST http://localhost:3333/api/offers HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "Куплю-продам все товары 0308",
+  "title": "Куплю-продам все товары 111",
   "description": "Новый детективный роман от короля ужасов.",
   "image": "./item05.jpg",
   "type": "Buy",
@@ -29,16 +29,17 @@ GET http://localhost:3333/api/offers/64ca3a926524f37866f9fcd1 HTTP/1.1
 
 ###
 
-# Get new posts
+# Get new offers
 GET http://localhost:3333/api/offers/bundles/new HTTP/1.1
 
 ###
 
-# Get all posts
+# Get all offers
 GET http://localhost:3333/api/offers HTTP/1.1
 
 ###
 
+# Patch offer
 PATCH http://localhost:3333/api/posts/1 HTTP/1.1
 Content-Type: application/json
 

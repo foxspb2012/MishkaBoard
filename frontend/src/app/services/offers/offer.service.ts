@@ -15,6 +15,10 @@ export class OfferService {
     return this.offerServiceRest.getOffers();
   }
 
+  getNewOffers(): Observable<OfferInterface[]> {
+    return this.offerServiceRest.getNewOffers();
+  }
+
   getOfferById(id: string): Observable<OfferInterface> {
     return this.offerServiceRest.getOfferById(id);
   }

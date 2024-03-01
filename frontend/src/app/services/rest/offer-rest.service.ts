@@ -15,6 +15,10 @@ export class OfferRestService {
     return this.http.get<OfferInterface[]>('http://localhost:3333/api/offers');
   }
 
+  getNewOffers(): Observable<OfferInterface[]> {
+    return this.http.get<OfferInterface[]>('http://localhost:3333/api/offers/bundles/new');
+  }
+
   getOfferById(id: string): Observable<OfferInterface> {
     return this.http.get<OfferInterface>(`http://localhost:3333/api/offers/${id}`);
   }
