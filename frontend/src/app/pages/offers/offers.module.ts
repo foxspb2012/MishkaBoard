@@ -9,6 +9,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { OfferCreateComponent } from './offer-create/offer-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OffersByCategoryComponent } from './offers-by-category/offers-by-category.component';
 
 @NgModule({
   declarations: [

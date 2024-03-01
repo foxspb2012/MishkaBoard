@@ -14,6 +14,10 @@ const routes: Routes = [
         component: OffersListComponent
       },
       {
+        path: 'offers-by-category/:id',
+        loadChildren:() => import('./offers-by-category/offers-by-category.module').then(m=>m.OffersByCategoryInfoModule)
+      },
+      {
         path: 'offer-create',
         component: OfferCreateComponent
       },

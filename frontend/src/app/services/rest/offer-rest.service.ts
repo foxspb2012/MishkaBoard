@@ -11,8 +11,8 @@ export class OfferRestService {
   constructor(private http: HttpClient) {
   }
 
-  getOffers(): Observable<OfferInterface[]> {
-    return this.http.get<OfferInterface[]>('http://localhost:3333/api/offers');
+  getOffers(id: string): Observable<OfferInterface[]> {
+    return this.http.get<OfferInterface[]>(`http://localhost:3333/api/offers/${id}/offers`);
   }
 
   getNewOffers(): Observable<OfferInterface[]> {

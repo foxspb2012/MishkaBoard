@@ -25,9 +25,9 @@ export class OffersListComponent implements OnInit {
       this.newOffers = data;
     });
 
-    this.offerService.getOffers().subscribe((data: OfferInterface[]): void => {
-      this.offers = data;
-    });
+    // this.offerService.getOffers().subscribe((data: OfferInterface[]): void => {
+    //   this.offers = data;
+    // });
 
     this.categoryService.getAllCategories().subscribe((data: CategoryInterface[]): void => {
       this.categories = data;

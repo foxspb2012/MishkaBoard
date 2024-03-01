@@ -11,8 +11,8 @@ export class OfferService {
   constructor(private offerServiceRest: OfferRestService) {
   }
 
-  getOffers(): Observable<OfferInterface[]> {
-    return this.offerServiceRest.getOffers();
+  getOffers(id: string): Observable<OfferInterface[]> {
+    return this.offerServiceRest.getOffers(id);
   }
 
   getNewOffers(): Observable<OfferInterface[]> {
