@@ -12,7 +12,7 @@
             *ngFor="let item of categories; let i = index">
             <a href="/offers/offers-by-category/{{item.id}}" class="category-tile category-tile--default">
               <span class="category-tile__image">
-                <img ngSrc="http://localhost:3333/assest/{{item.image}}" alt="Иконка категории">
+                <img src="http://localhost:3333/public/{{item.image}}" alt="Иконка категории">
               </span>
               <span class="category-tile__label">{{ item.name }}
                 <span class="category-tile__qty js-qty">{{ item.offerCount }}</span>

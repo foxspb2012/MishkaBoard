@@ -3,8 +3,8 @@ POST http://localhost:3333/api/categories HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Собаки",
-  "image": "./dogs.jpg"
+  "name": "Одежда",
+  "image": "cat03.jpg"
 }
 ###
 

@@ -7,7 +7,7 @@ export class CreateCategoryDto {
     example: 'Cats'
   })
   @IsString({message: 'name is required'})
-  @Length(4, 12, {message: 'Min length is 4, max is 12'})
+  @Length(3, 12, {message: 'Min length is 3, max is 20'})
   public name: string;
 
   @ApiProperty({
@@ -15,6 +15,6 @@ export class CreateCategoryDto {
     example: 'cat-auto.jpg',
   })
   @IsString({message: 'image is required'})
-  @Length(4, 36, {message: 'Min length is 4, max is 36'})
+  @Length(3, 36, {message: 'Min length is 3, max is 36'})
   public image: string;
 }

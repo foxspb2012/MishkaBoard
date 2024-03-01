@@ -4,7 +4,7 @@
     <a class = "ticket__navigate" routerLink="/offers/offers-list">< Назад</a>
     <div class="ticket__content">
       <div class="ticket__img">
-        <img src="http://localhost:3333/public/{{offer?.image}}" alt="Изображение товара" height="301" width="241">
+        <img ngSrc="http://localhost:3333/public/{{offer?.image}}" alt="Изображение товара" height="301" width="241">
       </div>
       <div class="ticket__info">
         <h2 class="ticket__title">{{offer?.title}}</h2>
@@ -33,9 +33,6 @@
         <ul class="ticket__tags">
           <li>
             <a href="#" class="category-tile category-tile--small">
-                    <span class="category-tile__image">
-                      <img ngSrc="img/cat.jpg" alt="Иконка категории" height="101" width="101">
-                    </span>
               <span class="category-tile__label">Дом</span>
             </a>
           </li>
